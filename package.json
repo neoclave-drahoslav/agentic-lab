@@ -1,0 +1,11 @@
+{
+  "name": "agent-instruction-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "agents:generate": "node scripts/agents.mjs",
+    "agents:check": "node scripts/agents.mjs --check"
+  }
+}
+
