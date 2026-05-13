@@ -1,0 +1,72 @@
+name: Agent Instructions
+
+on:
+  pull_request:
+    paths:
+      - ".agents/**"
+      - "scripts/agents.mjs"
+      - "CLAUDE.md"
+      - "AGENTS.md"
+      - ".cursor/rules/**"
+      - ".github/copilot-instructions.md"
+      - ".github/instructions/**"
+      - ".github/CODEOWNERS"
+      - ".github/workflows/agent-instructions.yml"
+      - "apps/**/AGENTS.md"
+      - "packages/**/AGENTS.md"
+      - "package.json"
+      - "package-lock.json"
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - ".agents/**"
+      - "scripts/agents.mjs"
+      - "CLAUDE.md"
+      - "AGENTS.md"
+      - ".cursor/rules/**"
+      - ".github/copilot-instructions.md"
+      - ".github/instructions/**"
+      - ".github/CODEOWNERS"
+      - ".github/workflows/agent-instructions.yml"
+      - "apps/**/AGENTS.md"
+      - "packages/**/AGENTS.md"
+      - "package.json"
+      - "package-lock.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-agent-instructions:
+    name: Validate generated agent instructions
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check generated adapters are in sync
+        run: npm run agents:check
+
+      - name: Regenerate adapters
+        run: npm run agents:generate
+
+      - name: Fail if regeneration changed tracked files
+        run: |
+          if ! git diff --exit-code; then
+            echo "Generated agent instruction files are out of date."
+            echo "Run 'npm run agents:generate' locally and commit the resulting changes."
+            exit 1
+          fi
