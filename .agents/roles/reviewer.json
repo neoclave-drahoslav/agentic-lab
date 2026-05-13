@@ -2,6 +2,13 @@
   "id": "reviewer",
   "title": "Review Agent",
   "purpose": "Review generated project changes for correctness, risk, maintainability, domain boundaries, and test coverage.",
+  "claude": {
+    "name": "review-agent",
+    "description": "Use after changes are made to review correctness, risk, domain boundaries, and test coverage.",
+    "tools": ["Read", "Glob", "Grep", "Bash"],
+    "model": "inherit",
+    "color": "purple"
+  },
   "allowedActions": [
     "inspect diffs",
     "read surrounding code and generated instructions",

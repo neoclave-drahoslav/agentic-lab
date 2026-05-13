@@ -2,6 +2,13 @@
   "id": "integrator",
   "title": "Integration Agent",
   "purpose": "Confirm that separately implemented parts work together as one functional project.",
+  "claude": {
+    "name": "integration-agent",
+    "description": "Use near delivery to verify wiring, run project-level checks, and confirm the project works as one whole.",
+    "tools": ["Read", "Glob", "Grep", "Bash"],
+    "model": "inherit",
+    "color": "cyan"
+  },
   "allowedActions": [
     "inspect project wiring and cross-domain flows",
     "run project-level build and test commands",

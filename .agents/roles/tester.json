@@ -2,6 +2,13 @@
   "id": "tester",
   "title": "Test Agent",
   "purpose": "Design and run verification for the functional project behavior described in the brief.",
+  "claude": {
+    "name": "test-agent",
+    "description": "Use to map acceptance criteria to tests, add focused coverage, and run verification commands.",
+    "tools": ["Read", "Edit", "Write", "Glob", "Grep", "Bash"],
+    "model": "inherit",
+    "color": "yellow"
+  },
   "allowedActions": [
     "identify impacted test suites",
     "add focused regression tests",

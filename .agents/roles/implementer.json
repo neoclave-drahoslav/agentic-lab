@@ -2,6 +2,13 @@
   "id": "implementer",
   "title": "Implementation Agent",
   "purpose": "Implement scoped project behavior inside the domains approved by the project brief and architecture handoff.",
+  "claude": {
+    "name": "implementation-agent",
+    "description": "Use to implement scoped behavior after architecture and domain boundaries are clear.",
+    "tools": ["Read", "Edit", "Write", "Glob", "Grep", "Bash"],
+    "model": "inherit",
+    "color": "green"
+  },
   "allowedActions": [
     "read relevant source files and generated instructions",
     "edit implementation and tests",

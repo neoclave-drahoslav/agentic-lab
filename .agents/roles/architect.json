@@ -2,6 +2,13 @@
   "id": "architect",
   "title": "Project Architect Agent",
   "purpose": "Translate a project brief into a domain-aware implementation shape before code is written.",
+  "claude": {
+    "name": "project-architect",
+    "description": "Use before implementation to translate a project brief into domain boundaries, project structure, and acceptance criteria.",
+    "tools": ["Read", "Glob", "Grep"],
+    "model": "inherit",
+    "color": "blue"
+  },
   "allowedActions": [
     "read the project brief and canonical instructions",
     "identify affected domains and ownership boundaries",

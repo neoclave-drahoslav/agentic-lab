@@ -1,221 +1,263 @@
 {
-  "globalSources": [
-    {
-      "id": "global",
-      "title": "Global Engineering Rules",
-      "path": "source/global.md"
-    },
-    {
-      "id": "domain-ownership",
-      "title": "Domain Ownership Rules",
-      "path": "source/domain-ownership.md"
-    },
-    {
-      "id": "project-generation",
-      "title": "Functional Project Generation Rules",
-      "path": "source/project-generation.md"
-    },
-    {
-      "id": "security",
-      "title": "Security Rules",
-      "path": "source/security.md"
-    },
-    {
-      "id": "testing",
-      "title": "Testing Rules",
-      "path": "source/testing.md"
-    },
-    {
-      "id": "git-workflow",
-      "title": "Git Workflow",
-      "path": "source/git-workflow.md"
-    }
-  ],
-  "roles": [
-    {
-      "id": "architect",
-      "path": "roles/architect.json"
-    },
-    {
-      "id": "implementer",
-      "path": "roles/implementer.json"
-    },
-    {
-      "id": "tester",
-      "path": "roles/tester.json"
-    },
-    {
-      "id": "reviewer",
-      "path": "roles/reviewer.json"
-    },
-    {
-      "id": "integrator",
-      "path": "roles/integrator.json"
-    }
-  ],
-  "domains": [
-    {
-      "id": "billing",
-      "name": "Billing",
-      "sourceDir": "domains/billing",
-      "ownerTeam": "Team Revenue",
-      "ownerPaths": [".agents/domains/billing/**"],
-      "runtimePaths": ["apps/billing/**", "packages/billing-client/**"],
-      "reviewers": ["@team-revenue"],
-      "riskLevel": "high",
-      "files": [
-        {
-          "id": "domain",
-          "title": "Domain Context",
-          "path": "domains/billing/domain.md"
-        },
-        {
-          "id": "ownership",
-          "title": "Ownership",
-          "path": "domains/billing/ownership.md"
-        },
-        {
-          "id": "testing",
-          "title": "Testing",
-          "path": "domains/billing/testing.md"
-        },
-        {
-          "id": "agent-overrides",
-          "title": "Agent Overrides",
-          "path": "domains/billing/agent-overrides.md"
-        }
-      ],
-      "testCommands": [
-        "npm run test -- --scope=billing",
-        "npm run lint -- --scope=billing"
-      ],
-      "localAdapterTarget": "apps/billing/AGENTS.md"
-    },
-    {
-      "id": "identity",
-      "name": "Identity",
-      "sourceDir": "domains/identity",
-      "ownerTeam": "Team Platform",
-      "ownerPaths": [".agents/domains/identity/**"],
-      "runtimePaths": ["apps/identity/**", "packages/auth-client/**"],
-      "reviewers": ["@team-platform", "@security-reviewers"],
-      "riskLevel": "critical",
-      "files": [
-        {
-          "id": "domain",
-          "title": "Domain Context",
-          "path": "domains/identity/domain.md"
-        },
-        {
-          "id": "ownership",
-          "title": "Ownership",
-          "path": "domains/identity/ownership.md"
-        },
-        {
-          "id": "testing",
-          "title": "Testing",
-          "path": "domains/identity/testing.md"
-        },
-        {
-          "id": "agent-overrides",
-          "title": "Agent Overrides",
-          "path": "domains/identity/agent-overrides.md"
-        }
-      ],
-      "testCommands": [
-        "npm run test -- --scope=identity",
-        "npm run security:check -- --scope=identity"
-      ],
-      "localAdapterTarget": "apps/identity/AGENTS.md"
-    },
-    {
-      "id": "frontend",
-      "name": "Frontend Platform",
-      "sourceDir": "domains/frontend",
-      "ownerTeam": "Team Experience",
-      "ownerPaths": [".agents/domains/frontend/**"],
-      "runtimePaths": ["packages/ui/**", "apps/web/**"],
-      "reviewers": ["@team-experience"],
-      "riskLevel": "medium",
-      "files": [
-        {
-          "id": "domain",
-          "title": "Domain Context",
-          "path": "domains/frontend/domain.md"
-        },
-        {
-          "id": "ownership",
-          "title": "Ownership",
-          "path": "domains/frontend/ownership.md"
-        },
-        {
-          "id": "testing",
-          "title": "Testing",
-          "path": "domains/frontend/testing.md"
-        },
-        {
-          "id": "agent-overrides",
-          "title": "Agent Overrides",
-          "path": "domains/frontend/agent-overrides.md"
-        }
-      ],
-      "testCommands": [
-        "npm run test -- --scope=frontend",
-        "npm run storybook:test"
-      ],
-      "localAdapterTarget": "packages/ui/AGENTS.md"
-    }
-  ],
-  "adapters": [
-    {
-      "id": "claude",
-      "target": "CLAUDE.md",
-      "template": "templates/root-agent.md.tpl",
-      "title": "Claude Repository Instructions",
-      "notes": "Claude reads this file from the repository root. It receives the same canonical agent roster, policies, domains, and project-generation rules as every other tool."
-    },
-    {
-      "id": "codex",
-      "target": "AGENTS.md",
-      "template": "templates/root-agent.md.tpl",
-      "title": "Codex Repository Instructions",
-      "notes": "Codex reads AGENTS.md files from the repository tree. It receives the same canonical agent roster, policies, domains, and project-generation rules as every other tool."
-    },
-    {
-      "id": "cursor",
-      "target": ".cursor/rules/agentic-engineering.mdc",
-      "template": "templates/cursor-rule.mdc.tpl",
-      "title": "Cursor Agentic Engineering Rule",
-      "notes": "Cursor consumes this file as a workspace rule. It receives the same canonical agent roster, policies, domains, and project-generation rules as every other tool."
-    },
-    {
-      "id": "copilot",
-      "target": ".github/copilot-instructions.md",
-      "template": "templates/root-agent.md.tpl",
-      "title": "GitHub Copilot Repository Instructions",
-      "notes": "GitHub Copilot reads repository-wide custom instructions from .github/copilot-instructions.md. It receives the same canonical agent roster, policies, domains, and project-generation rules as every other tool."
-    }
-  ],
-  "domainAdapterTemplate": "templates/domain-agent.md.tpl",
-  "copilotPathInstructionTemplate": "templates/copilot-path.instructions.md.tpl",
-  "copilotPathInstructions": [
-    {
-      "id": "billing",
-      "domainId": "billing",
-      "target": ".github/instructions/billing.instructions.md",
-      "applyTo": "apps/billing/**"
-    },
-    {
-      "id": "identity",
-      "domainId": "identity",
-      "target": ".github/instructions/identity.instructions.md",
-      "applyTo": "apps/identity/**"
-    },
-    {
-      "id": "frontend",
-      "domainId": "frontend",
-      "target": ".github/instructions/frontend.instructions.md",
-      "applyTo": "packages/ui/**"
-    }
-  ]
+    "globalSources":  [
+                          {
+                              "id":  "global",
+                              "title":  "Global Engineering Rules",
+                              "path":  "source/global.md"
+                          },
+                          {
+                              "id":  "domain-ownership",
+                              "title":  "Domain Ownership Rules",
+                              "path":  "source/domain-ownership.md"
+                          },
+                          {
+                              "id":  "project-generation",
+                              "title":  "Functional Project Generation Rules",
+                              "path":  "source/project-generation.md"
+                          },
+                          {
+                              "id":  "security",
+                              "title":  "Security Rules",
+                              "path":  "source/security.md"
+                          },
+                          {
+                              "id":  "testing",
+                              "title":  "Testing Rules",
+                              "path":  "source/testing.md"
+                          },
+                          {
+                              "id":  "git-workflow",
+                              "title":  "Git Workflow",
+                              "path":  "source/git-workflow.md"
+                          }
+                      ],
+    "roles":  [
+                  {
+                      "id":  "architect",
+                      "path":  "roles/architect.json"
+                  },
+                  {
+                      "id":  "implementer",
+                      "path":  "roles/implementer.json"
+                  },
+                  {
+                      "id":  "tester",
+                      "path":  "roles/tester.json"
+                  },
+                  {
+                      "id":  "reviewer",
+                      "path":  "roles/reviewer.json"
+                  },
+                  {
+                      "id":  "integrator",
+                      "path":  "roles/integrator.json"
+                  }
+              ],
+    "domains":  [
+                    {
+                        "id":  "billing",
+                        "name":  "Billing",
+                        "sourceDir":  "domains/billing",
+                        "ownerTeam":  "Team Revenue",
+                        "ownerPaths":  [
+                                           ".agents/domains/billing/**"
+                                       ],
+                        "runtimePaths":  [
+                                             "apps/billing/**",
+                                             "packages/billing-client/**"
+                                         ],
+                        "reviewers":  [
+                                          "@team-revenue"
+                                      ],
+                        "riskLevel":  "high",
+                        "files":  [
+                                      {
+                                          "id":  "domain",
+                                          "title":  "Domain Context",
+                                          "path":  "domains/billing/domain.md"
+                                      },
+                                      {
+                                          "id":  "ownership",
+                                          "title":  "Ownership",
+                                          "path":  "domains/billing/ownership.md"
+                                      },
+                                      {
+                                          "id":  "testing",
+                                          "title":  "Testing",
+                                          "path":  "domains/billing/testing.md"
+                                      },
+                                      {
+                                          "id":  "agent-overrides",
+                                          "title":  "Agent Overrides",
+                                          "path":  "domains/billing/agent-overrides.md"
+                                      }
+                                  ],
+                        "testCommands":  [
+                                             "npm run test -- --scope=billing",
+                                             "npm run lint -- --scope=billing"
+                                         ],
+                        "localAdapterTarget":  "apps/billing/AGENTS.md"
+                    },
+                    {
+                        "id":  "identity",
+                        "name":  "Identity",
+                        "sourceDir":  "domains/identity",
+                        "ownerTeam":  "Team Platform",
+                        "ownerPaths":  [
+                                           ".agents/domains/identity/**"
+                                       ],
+                        "runtimePaths":  [
+                                             "apps/identity/**",
+                                             "packages/auth-client/**"
+                                         ],
+                        "reviewers":  [
+                                          "@team-platform",
+                                          "@security-reviewers"
+                                      ],
+                        "riskLevel":  "critical",
+                        "files":  [
+                                      {
+                                          "id":  "domain",
+                                          "title":  "Domain Context",
+                                          "path":  "domains/identity/domain.md"
+                                      },
+                                      {
+                                          "id":  "ownership",
+                                          "title":  "Ownership",
+                                          "path":  "domains/identity/ownership.md"
+                                      },
+                                      {
+                                          "id":  "testing",
+                                          "title":  "Testing",
+                                          "path":  "domains/identity/testing.md"
+                                      },
+                                      {
+                                          "id":  "agent-overrides",
+                                          "title":  "Agent Overrides",
+                                          "path":  "domains/identity/agent-overrides.md"
+                                      }
+                                  ],
+                        "testCommands":  [
+                                             "npm run test -- --scope=identity",
+                                             "npm run security:check -- --scope=identity"
+                                         ],
+                        "localAdapterTarget":  "apps/identity/AGENTS.md"
+                    },
+                    {
+                        "id":  "frontend",
+                        "name":  "Frontend Platform",
+                        "sourceDir":  "domains/frontend",
+                        "ownerTeam":  "Team Experience",
+                        "ownerPaths":  [
+                                           ".agents/domains/frontend/**"
+                                       ],
+                        "runtimePaths":  [
+                                             "packages/ui/**",
+                                             "apps/web/**"
+                                         ],
+                        "reviewers":  [
+                                          "@team-experience"
+                                      ],
+                        "riskLevel":  "medium",
+                        "files":  [
+                                      {
+                                          "id":  "domain",
+                                          "title":  "Domain Context",
+                                          "path":  "domains/frontend/domain.md"
+                                      },
+                                      {
+                                          "id":  "ownership",
+                                          "title":  "Ownership",
+                                          "path":  "domains/frontend/ownership.md"
+                                      },
+                                      {
+                                          "id":  "testing",
+                                          "title":  "Testing",
+                                          "path":  "domains/frontend/testing.md"
+                                      },
+                                      {
+                                          "id":  "agent-overrides",
+                                          "title":  "Agent Overrides",
+                                          "path":  "domains/frontend/agent-overrides.md"
+                                      }
+                                  ],
+                        "testCommands":  [
+                                             "npm run test -- --scope=frontend",
+                                             "npm run storybook:test"
+                                         ],
+                        "localAdapterTarget":  "packages/ui/AGENTS.md"
+                    }
+                ],
+    "adapters":  [
+                     {
+                         "id":  "claude",
+                         "target":  "CLAUDE.md",
+                         "template":  "templates/claude-root.md.tpl",
+                         "title":  "Claude Repository Instructions",
+                         "notes":  "Claude reads this file from the repository root. It receives the same canonical agent roster, policies, domains, and project-generation rules as every other tool."
+                     },
+                     {
+                         "id":  "codex",
+                         "target":  "AGENTS.md",
+                         "template":  "templates/root-agent.md.tpl",
+                         "title":  "Codex Repository Instructions",
+                         "notes":  "Codex reads AGENTS.md files from the repository tree. It receives the same canonical agent roster, policies, domains, and project-generation rules as every other tool."
+                     },
+                     {
+                         "id":  "cursor",
+                         "target":  ".cursor/rules/agentic-engineering.mdc",
+                         "template":  "templates/cursor-root.mdc.tpl",
+                         "title":  "Cursor Agentic Engineering Rule",
+                         "notes":  "Cursor consumes this file as a workspace rule. It receives the same canonical agent roster, policies, domains, and project-generation rules as every other tool."
+                     },
+                     {
+                         "id":  "copilot",
+                         "target":  ".github/copilot-instructions.md",
+                         "template":  "templates/root-agent.md.tpl",
+                         "title":  "GitHub Copilot Repository Instructions",
+                         "notes":  "GitHub Copilot reads repository-wide custom instructions from .github/copilot-instructions.md. It receives the same canonical agent roster, policies, domains, and project-generation rules as every other tool."
+                     }
+                 ],
+    "domainAdapterTemplate":  "templates/domain-agent.md.tpl",
+    "copilotPathInstructionTemplate":  "templates/copilot-path.instructions.md.tpl",
+    "copilotPathInstructions":  [
+                                    {
+                                        "id":  "billing",
+                                        "domainId":  "billing",
+                                        "target":  ".github/instructions/billing.instructions.md",
+                                        "applyTo":  "apps/billing/**"
+                                    },
+                                    {
+                                        "id":  "identity",
+                                        "domainId":  "identity",
+                                        "target":  ".github/instructions/identity.instructions.md",
+                                        "applyTo":  "apps/identity/**"
+                                    },
+                                    {
+                                        "id":  "frontend",
+                                        "domainId":  "frontend",
+                                        "target":  ".github/instructions/frontend.instructions.md",
+                                        "applyTo":  "packages/ui/**"
+                                    }
+                                ],
+    "claudeAgentTemplate":  "templates/claude-agent.md.tpl",
+    "claudeAgentsTargetDir":  ".claude/agents",
+    "cursorDomainRuleTemplate":  "templates/cursor-domain.mdc.tpl",
+    "cursorDomainRules":  [
+                              {
+                                  "id":  "billing",
+                                  "domainId":  "billing",
+                                  "target":  ".cursor/rules/billing-domain.mdc"
+                              },
+                              {
+                                  "id":  "identity",
+                                  "domainId":  "identity",
+                                  "target":  ".cursor/rules/identity-domain.mdc"
+                              },
+                              {
+                                  "id":  "frontend",
+                                  "domainId":  "frontend",
+                                  "target":  ".cursor/rules/frontend-domain.mdc"
+                              }
+                          ]
 }
