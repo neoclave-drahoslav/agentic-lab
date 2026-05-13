@@ -113,14 +113,31 @@ The repository includes a validation workflow at `.github/workflows/agent-instru
 It runs on pull requests, pushes to `main` or `master`, and manual dispatch.
 See `docs/github-actions.md` for setup and test instructions.
 
-## Suggested CI Step
+## CI Validation
+
+The included GitHub Actions workflow validates generated instruction files with
+this sequence:
 
 ```bash
 npm ci
-npm run agents:generate
 npm run agents:check
+npm run agents:generate
+git diff --exit-code
 ```
 
-For a real repo, you would usually run the check without committing changes
-from CI. The key rule is simple: if generated adapters drift from canonical
-sources, the build should fail.
+`agents:check` fails fast when generated adapters are missing or out of sync.
+The generate + diff step proves the generator is reproducible and that the PR
+includes every generated file that should change.
+
+For normal development, the expected PR flow is:
+
+```bash
+npm run agents:generate
+npm run agents:check
+git add .
+git commit -m "Update agent instructions"
+```
+
+The key rule is simple: canonical source changes and generated adapter changes
+belong in the same PR. If generated adapters drift from canonical sources, the
+build should fail.
