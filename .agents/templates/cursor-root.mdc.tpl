@@ -1,5 +1,5 @@
 ---
-description: Generated repository-wide agentic engineering policy for this monorepo
+description: {{descriptionYaml}}
 alwaysApply: true
 ---
 {{banner}}

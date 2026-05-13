@@ -1,6 +1,6 @@
 ---
-description: Generated Frontend Platform domain instructions from .agents canonical sources
-globs: packages/ui/**,apps/web/**
+description: "Generated Frontend Platform domain instructions from .agents canonical sources"
+globs: "packages/ui/**,apps/web/**"
 alwaysApply: false
 ---
 <!--

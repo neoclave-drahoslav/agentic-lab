@@ -1,9 +1,9 @@
 ---
-name: {{agentName}}
-description: {{description}}
-tools: {{tools}}
-model: {{model}}
-color: {{color}}
+name: {{agentNameYaml}}
+description: {{descriptionYaml}}
+tools: {{toolsCsv}}
+model: {{modelYaml}}
+color: {{colorYaml}}
 ---
 {{banner}}
 # {{title}}

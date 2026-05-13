@@ -1,0 +1,25 @@
+{
+  "marker": "Generated from .agents/ canonical sources.",
+  "schemaVersion": 1,
+  "generatedBy": "scripts/agents.mjs",
+  "files": [
+    ".claude/agents/implementation-agent.md",
+    ".claude/agents/integration-agent.md",
+    ".claude/agents/project-architect.md",
+    ".claude/agents/review-agent.md",
+    ".claude/agents/test-agent.md",
+    ".cursor/rules/agentic-engineering.mdc",
+    ".cursor/rules/billing-domain.mdc",
+    ".cursor/rules/frontend-domain.mdc",
+    ".cursor/rules/identity-domain.mdc",
+    ".github/copilot-instructions.md",
+    ".github/instructions/billing.instructions.md",
+    ".github/instructions/frontend.instructions.md",
+    ".github/instructions/identity.instructions.md",
+    "AGENTS.md",
+    "apps/billing/AGENTS.md",
+    "apps/identity/AGENTS.md",
+    "CLAUDE.md",
+    "packages/ui/AGENTS.md"
+  ]
+}

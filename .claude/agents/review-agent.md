@@ -1,9 +1,9 @@
 ---
-name: review-agent
-description: Use after changes are made to review correctness, risk, domain boundaries, and test coverage.
+name: "review-agent"
+description: "Use after changes are made to review correctness, risk, domain boundaries, and test coverage."
 tools: Read, Glob, Grep, Bash
-model: inherit
-color: purple
+model: "inherit"
+color: "purple"
 ---
 <!--
 DO NOT EDIT.

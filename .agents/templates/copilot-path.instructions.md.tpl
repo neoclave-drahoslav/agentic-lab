@@ -1,5 +1,5 @@
 ---
-applyTo: "{{applyTo}}"
+applyTo: {{applyToYaml}}
 ---
 {{banner}}
 # {{domainName}} Copilot Instructions

@@ -1,13 +1,12 @@
+---
+description: "Cursor consumes this file as a workspace rule. It receives the same canonical agent roster, policies, domains, and project-generation rules as every other tool."
+alwaysApply: true
+---
 <!--
 DO NOT EDIT.
 Generated from .agents/ canonical sources.
 Run: npm run agents:generate
 -->
-
----
-description: Generated agentic engineering rules for this monorepo
-alwaysApply: true
----
 
 # Cursor Agentic Engineering Rule
 
@@ -181,266 +180,7 @@ edit the source under `.agents/` and run:
 npm run agents:generate
 ```
 
-## Domains
-
-### Billing
-
-Domain id: `billing`
-Owner team: Team Revenue
-Risk level: high
-
-Runtime paths:
-- `apps/billing/**`
-- `packages/billing-client/**`
-
-Instruction source paths:
-- `.agents/domains/billing/**`
-
-Required reviewers:
-- @team-revenue
-
-Verification commands:
-- `npm run test -- --scope=billing`
-- `npm run lint -- --scope=billing`
-
-### Domain Context
-
-The billing domain owns invoices, subscriptions, payment state, and revenue
-events. It is a high-risk domain because mistakes can charge customers
-incorrectly or break financial reporting.
-
-## Responsibilities
-
-- Plan, subscription, invoice, refund, and payment state.
-- Revenue event publication.
-- Payment provider integration state.
-- Billing-facing audit signals.
-
-## Boundaries
-
-- Billing code may publish revenue events but must not own identity decisions.
-- Currency arithmetic must use decimal-safe helpers.
-- Payment provider integrations must remain idempotent.
-- Refund, retry, and reconciliation flows require tests.
-
-### Ownership
-
-Owner team: Team Revenue.
-
-Runtime paths:
-
-- `apps/billing/**`
-- `packages/billing-client/**`
-
-Instruction source paths:
-
-- `.agents/domains/billing/**`
-
-Required reviewers:
-
-- `@team-revenue`
-
-## Review Triggers
-
-- Pricing, tax, invoice, refund, or subscription changes.
-- New payment provider capabilities.
-- Changes to revenue event schemas.
-- Any cross-domain change that reads identity or entitlement state.
-
-### Testing
-
-Required commands:
-
-- `npm run test -- --scope=billing`
-- `npm run lint -- --scope=billing`
-
-## Required Coverage
-
-- Free, paid, cancelled, expired, and retrying subscription states.
-- Idempotent payment provider callbacks.
-- Refund and reconciliation edge cases.
-- Revenue event schema compatibility.
-
-### Agent Overrides
-
-- Treat every payment-state mutation as high risk.
-- Do not introduce floating-point currency calculations.
-- Do not change invoice or revenue event schemas without calling out the
-  compatibility impact.
-- If a task touches identity, entitlements, or audit semantics, request
-  cross-domain review in the handoff.
-
-### Identity
-
-Domain id: `identity`
-Owner team: Team Platform
-Risk level: critical
-
-Runtime paths:
-- `apps/identity/**`
-- `packages/auth-client/**`
-
-Instruction source paths:
-- `.agents/domains/identity/**`
-
-Required reviewers:
-- @team-platform
-- @security-reviewers
-
-Verification commands:
-- `npm run test -- --scope=identity`
-- `npm run security:check -- --scope=identity`
-
-### Domain Context
-
-The identity domain owns authentication, authorization, sessions, tenant access,
-and audit signals. It is a critical domain because defects can expose data or
-grant unintended access.
-
-## Responsibilities
-
-- Users, sessions, roles, permissions, and tenant membership.
-- Authentication and authorization guards.
-- Token lifecycle and credential-adjacent flows.
-- Security audit events for access changes.
-
-## Boundaries
-
-- Authorization checks must be explicit and close to the protected operation.
-- Session changes require compatibility with existing clients.
-- Audit events must be emitted for privilege and access changes.
-- Token handling must avoid logging secrets or credentials.
-
-### Ownership
-
-Owner team: Team Platform.
-
-Runtime paths:
-
-- `apps/identity/**`
-- `packages/auth-client/**`
-
-Instruction source paths:
-
-- `.agents/domains/identity/**`
-
-Required reviewers:
-
-- `@team-platform`
-- `@security-reviewers` for auth, permission, token, or tenant-boundary changes.
-
-## Review Triggers
-
-- Login, session, token, permission, role, or tenant-boundary changes.
-- Any change that weakens a guard, fallback, or deny path.
-- Any new machine-to-machine or agent identity flow.
-
-### Testing
-
-Required commands:
-
-- `npm run test -- --scope=identity`
-- `npm run security:check -- --scope=identity`
-
-## Required Coverage
-
-- Positive and negative authorization paths.
-- Tenant isolation behavior.
-- Session compatibility and token lifecycle behavior.
-- Audit event emission for privilege and access changes.
-
-### Agent Overrides
-
-- Default to deny when authorization behavior is ambiguous.
-- Do not weaken authentication, authorization, token, or tenant-boundary guards.
-- Never log credentials, tokens, secrets, or raw session material.
-- Call out security review needs explicitly in the handoff.
-
-### Frontend Platform
-
-Domain id: `frontend`
-Owner team: Team Experience
-Risk level: medium
-
-Runtime paths:
-- `packages/ui/**`
-- `apps/web/**`
-
-Instruction source paths:
-- `.agents/domains/frontend/**`
-
-Required reviewers:
-- @team-experience
-
-Verification commands:
-- `npm run test -- --scope=frontend`
-- `npm run storybook:test`
-
-### Domain Context
-
-The frontend platform domain owns shared UI components, design tokens,
-accessibility patterns, and cross-product interaction conventions.
-
-## Responsibilities
-
-- Shared UI components and composition patterns.
-- Design tokens and visual consistency.
-- Accessibility behavior.
-- Cross-product frontend developer experience.
-
-## Boundaries
-
-- Shared components must remain backward compatible by default.
-- Accessibility is part of done, not a follow-up.
-- Visual changes should avoid layout shift and text overflow.
-- Domain product logic should not move into generic UI primitives.
-
-### Ownership
-
-Owner team: Team Experience.
-
-Runtime paths:
-
-- `packages/ui/**`
-- `apps/web/**`
-
-Instruction source paths:
-
-- `.agents/domains/frontend/**`
-
-Required reviewers:
-
-- `@team-experience`
-
-## Review Triggers
-
-- Shared component API changes.
-- Design token changes.
-- Accessibility behavior changes.
-- Changes that affect multiple product surfaces.
-
-### Testing
-
-Required commands:
-
-- `npm run test -- --scope=frontend`
-- `npm run storybook:test`
-
-## Required Coverage
-
-- Component behavior for public APIs.
-- Accessibility states and keyboard interaction.
-- Layout stability for responsive surfaces.
-- Visual regression coverage when available.
-
-### Agent Overrides
-
-- Prefer existing shared components and tokens before adding new primitives.
-- Do not move product-specific business logic into shared UI packages.
-- Check text overflow, keyboard behavior, and accessible names for UI changes.
-- Call out cross-product impact when changing shared component APIs.
-
-## Roles
+## Agent Roles
 
 ### Project Architect Agent
 
@@ -564,3 +304,50 @@ Must not do:
 - hide integration failures behind local-only assumptions
 - change domain ownership to make wiring easier
 - leave the project without run and test instructions
+
+## Domain Index
+
+### Billing
+
+Domain id: `billing`
+Owner team: Team Revenue
+Risk level: high
+
+Runtime paths:
+- `apps/billing/**`
+- `packages/billing-client/**`
+
+Generated domain adapters:
+- `apps/billing/AGENTS.md`
+- `.github/instructions/billing.instructions.md`
+- `.cursor/rules/billing-domain.mdc`
+
+### Identity
+
+Domain id: `identity`
+Owner team: Team Platform
+Risk level: critical
+
+Runtime paths:
+- `apps/identity/**`
+- `packages/auth-client/**`
+
+Generated domain adapters:
+- `apps/identity/AGENTS.md`
+- `.github/instructions/identity.instructions.md`
+- `.cursor/rules/identity-domain.mdc`
+
+### Frontend Platform
+
+Domain id: `frontend`
+Owner team: Team Experience
+Risk level: medium
+
+Runtime paths:
+- `packages/ui/**`
+- `apps/web/**`
+
+Generated domain adapters:
+- `packages/ui/AGENTS.md`
+- `.github/instructions/frontend.instructions.md`
+- `.cursor/rules/frontend-domain.mdc`

@@ -1,9 +1,9 @@
 ---
-name: implementation-agent
-description: Use to implement scoped behavior after architecture and domain boundaries are clear.
+name: "implementation-agent"
+description: "Use to implement scoped behavior after architecture and domain boundaries are clear."
 tools: Read, Edit, Write, Glob, Grep, Bash
-model: inherit
-color: green
+model: "inherit"
+color: "green"
 ---
 <!--
 DO NOT EDIT.

@@ -1,10 +1,14 @@
 # Demo ownership mapping for agent instruction governance.
 # Replace these handles with real GitHub teams in a production repository.
 
-/.agents/source/**      @platform-architecture
-/.agents/roles/**       @platform-architecture
-/.agents/templates/**   @platform-architecture
-/scripts/agents.mjs     @platform-architecture
+/.agents/config.json         @platform-architecture
+/.agents/config.schema.json  @platform-architecture
+/.agents/source/**           @platform-architecture
+/.agents/roles/**            @platform-architecture
+/.agents/templates/**        @platform-architecture
+/.agents/generated-manifest.json @platform-architecture
+/.claude/agents/**           @platform-architecture
+/scripts/agents.mjs          @platform-architecture
 
 /.agents/domains/billing/**   @team-revenue
 /.agents/domains/identity/**  @team-platform @security-reviewers

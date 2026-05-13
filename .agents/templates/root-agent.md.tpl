@@ -12,13 +12,13 @@ If a rule is wrong, edit the source file and regenerate adapters.
 
 {{globalSections}}
 
-## Domain Registry
-
-{{domainSections}}
-
 ## Agent Roles
 
 {{roleSections}}
+
+## Domain Index
+
+{{domainIndex}}
 
 ## Handoff Format
 
@@ -28,4 +28,3 @@ Every agent should finish with:
 - Files changed.
 - Verification run.
 - Risks, skipped checks, or handoff needs.
-

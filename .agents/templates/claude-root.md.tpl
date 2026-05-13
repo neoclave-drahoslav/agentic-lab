@@ -20,9 +20,9 @@ large role definition.
 
 {{globalSections}}
 
-## Domain Registry
+## Domain Index
 
-{{domainSections}}
+{{domainIndex}}
 
 ## Handoff Format
 

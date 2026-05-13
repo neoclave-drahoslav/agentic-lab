@@ -1,6 +1,6 @@
 ---
-description: Generated Billing domain instructions from .agents canonical sources
-globs: apps/billing/**,packages/billing-client/**
+description: "Generated Billing domain instructions from .agents canonical sources"
+globs: "apps/billing/**,packages/billing-client/**"
 alwaysApply: false
 ---
 <!--

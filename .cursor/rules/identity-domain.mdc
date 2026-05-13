@@ -1,6 +1,6 @@
 ---
-description: Generated Identity domain instructions from .agents canonical sources
-globs: apps/identity/**,packages/auth-client/**
+description: "Generated Identity domain instructions from .agents canonical sources"
+globs: "apps/identity/**,packages/auth-client/**"
 alwaysApply: false
 ---
 <!--

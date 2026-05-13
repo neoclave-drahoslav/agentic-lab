@@ -1,6 +1,6 @@
 ---
-description: Generated {{domainName}} domain instructions from .agents canonical sources
-globs: {{globs}}
+description: {{descriptionYaml}}
+globs: {{globsYaml}}
 alwaysApply: false
 ---
 {{banner}}

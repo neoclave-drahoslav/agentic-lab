@@ -1,9 +1,9 @@
 ---
-name: test-agent
-description: Use to map acceptance criteria to tests, add focused coverage, and run verification commands.
+name: "test-agent"
+description: "Use to map acceptance criteria to tests, add focused coverage, and run verification commands."
 tools: Read, Edit, Write, Glob, Grep, Bash
-model: inherit
-color: yellow
+model: "inherit"
+color: "yellow"
 ---
 <!--
 DO NOT EDIT.

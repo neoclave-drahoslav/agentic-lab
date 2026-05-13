@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "agents:generate": "node scripts/agents.mjs",
-    "agents:check": "node scripts/agents.mjs --check"
+    "agents:check": "node scripts/agents.mjs --check",
+    "agents:validate": "node scripts/agents.mjs --validate"
   }
 }
-

@@ -6,6 +6,7 @@ on:
       - ".agents/**"
       - "scripts/agents.mjs"
       - "CLAUDE.md"
+      - ".claude/agents/**"
       - "AGENTS.md"
       - ".cursor/rules/**"
       - ".github/copilot-instructions.md"
@@ -24,6 +25,7 @@ on:
       - ".agents/**"
       - "scripts/agents.mjs"
       - "CLAUDE.md"
+      - ".claude/agents/**"
       - "AGENTS.md"
       - ".cursor/rules/**"
       - ".github/copilot-instructions.md"
@@ -56,6 +58,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Validate canonical config
+        run: npm run agents:validate
 
       - name: Check generated adapters are in sync
         run: npm run agents:check

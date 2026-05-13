@@ -1,9 +1,9 @@
 ---
-name: project-architect
-description: Use before implementation to translate a project brief into domain boundaries, project structure, and acceptance criteria.
+name: "project-architect"
+description: "Use before implementation to translate a project brief into domain boundaries, project structure, and acceptance criteria."
 tools: Read, Glob, Grep
-model: inherit
-color: blue
+model: "inherit"
+color: "blue"
 ---
 <!--
 DO NOT EDIT.

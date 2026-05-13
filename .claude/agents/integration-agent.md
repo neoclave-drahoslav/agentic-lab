@@ -1,9 +1,9 @@
 ---
-name: integration-agent
-description: Use near delivery to verify wiring, run project-level checks, and confirm the project works as one whole.
+name: "integration-agent"
+description: "Use near delivery to verify wiring, run project-level checks, and confirm the project works as one whole."
 tools: Read, Glob, Grep, Bash
-model: inherit
-color: cyan
+model: "inherit"
+color: "cyan"
 ---
 <!--
 DO NOT EDIT.
