@@ -1,0 +1,122 @@
+---
+description: Generated Identity domain instructions from .agents canonical sources
+globs: apps/identity/**,packages/auth-client/**
+alwaysApply: false
+---
+<!--
+DO NOT EDIT.
+Generated from .agents/ canonical sources.
+Run: npm run agents:generate
+-->
+
+# Identity Cursor Rule
+
+These path-scoped instructions are generated from `.agents/` canonical sources
+and apply when Cursor references files matching:
+
+- `apps/identity/**`
+- `packages/auth-client/**`
+
+## Domain Ownership
+
+Owner team: Team Platform
+
+Instruction source paths:
+- `.agents/domains/identity/**`
+
+Required reviewers:
+- @team-platform
+- @security-reviewers
+
+## Domain Context
+
+### Identity
+
+Domain id: `identity`
+Owner team: Team Platform
+Risk level: critical
+
+Runtime paths:
+- `apps/identity/**`
+- `packages/auth-client/**`
+
+Instruction source paths:
+- `.agents/domains/identity/**`
+
+Required reviewers:
+- @team-platform
+- @security-reviewers
+
+Verification commands:
+- `npm run test -- --scope=identity`
+- `npm run security:check -- --scope=identity`
+
+### Domain Context
+
+The identity domain owns authentication, authorization, sessions, tenant access,
+and audit signals. It is a critical domain because defects can expose data or
+grant unintended access.
+
+## Responsibilities
+
+- Users, sessions, roles, permissions, and tenant membership.
+- Authentication and authorization guards.
+- Token lifecycle and credential-adjacent flows.
+- Security audit events for access changes.
+
+## Boundaries
+
+- Authorization checks must be explicit and close to the protected operation.
+- Session changes require compatibility with existing clients.
+- Audit events must be emitted for privilege and access changes.
+- Token handling must avoid logging secrets or credentials.
+
+### Ownership
+
+Owner team: Team Platform.
+
+Runtime paths:
+
+- `apps/identity/**`
+- `packages/auth-client/**`
+
+Instruction source paths:
+
+- `.agents/domains/identity/**`
+
+Required reviewers:
+
+- `@team-platform`
+- `@security-reviewers` for auth, permission, token, or tenant-boundary changes.
+
+## Review Triggers
+
+- Login, session, token, permission, role, or tenant-boundary changes.
+- Any change that weakens a guard, fallback, or deny path.
+- Any new machine-to-machine or agent identity flow.
+
+### Testing
+
+Required commands:
+
+- `npm run test -- --scope=identity`
+- `npm run security:check -- --scope=identity`
+
+## Required Coverage
+
+- Positive and negative authorization paths.
+- Tenant isolation behavior.
+- Session compatibility and token lifecycle behavior.
+- Audit event emission for privilege and access changes.
+
+### Agent Overrides
+
+- Default to deny when authorization behavior is ambiguous.
+- Do not weaken authentication, authorization, token, or tenant-boundary guards.
+- Never log credentials, tokens, secrets, or raw session material.
+- Call out security review needs explicitly in the handoff.
+
+## Required Verification
+
+- `npm run test -- --scope=identity`
+- `npm run security:check -- --scope=identity`

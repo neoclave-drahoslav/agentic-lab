@@ -1,0 +1,119 @@
+---
+description: Generated Frontend Platform domain instructions from .agents canonical sources
+globs: packages/ui/**,apps/web/**
+alwaysApply: false
+---
+<!--
+DO NOT EDIT.
+Generated from .agents/ canonical sources.
+Run: npm run agents:generate
+-->
+
+# Frontend Platform Cursor Rule
+
+These path-scoped instructions are generated from `.agents/` canonical sources
+and apply when Cursor references files matching:
+
+- `packages/ui/**`
+- `apps/web/**`
+
+## Domain Ownership
+
+Owner team: Team Experience
+
+Instruction source paths:
+- `.agents/domains/frontend/**`
+
+Required reviewers:
+- @team-experience
+
+## Domain Context
+
+### Frontend Platform
+
+Domain id: `frontend`
+Owner team: Team Experience
+Risk level: medium
+
+Runtime paths:
+- `packages/ui/**`
+- `apps/web/**`
+
+Instruction source paths:
+- `.agents/domains/frontend/**`
+
+Required reviewers:
+- @team-experience
+
+Verification commands:
+- `npm run test -- --scope=frontend`
+- `npm run storybook:test`
+
+### Domain Context
+
+The frontend platform domain owns shared UI components, design tokens,
+accessibility patterns, and cross-product interaction conventions.
+
+## Responsibilities
+
+- Shared UI components and composition patterns.
+- Design tokens and visual consistency.
+- Accessibility behavior.
+- Cross-product frontend developer experience.
+
+## Boundaries
+
+- Shared components must remain backward compatible by default.
+- Accessibility is part of done, not a follow-up.
+- Visual changes should avoid layout shift and text overflow.
+- Domain product logic should not move into generic UI primitives.
+
+### Ownership
+
+Owner team: Team Experience.
+
+Runtime paths:
+
+- `packages/ui/**`
+- `apps/web/**`
+
+Instruction source paths:
+
+- `.agents/domains/frontend/**`
+
+Required reviewers:
+
+- `@team-experience`
+
+## Review Triggers
+
+- Shared component API changes.
+- Design token changes.
+- Accessibility behavior changes.
+- Changes that affect multiple product surfaces.
+
+### Testing
+
+Required commands:
+
+- `npm run test -- --scope=frontend`
+- `npm run storybook:test`
+
+## Required Coverage
+
+- Component behavior for public APIs.
+- Accessibility states and keyboard interaction.
+- Layout stability for responsive surfaces.
+- Visual regression coverage when available.
+
+### Agent Overrides
+
+- Prefer existing shared components and tokens before adding new primitives.
+- Do not move product-specific business logic into shared UI packages.
+- Check text overflow, keyboard behavior, and accessible names for UI changes.
+- Call out cross-product impact when changing shared component APIs.
+
+## Required Verification
+
+- `npm run test -- --scope=frontend`
+- `npm run storybook:test`
